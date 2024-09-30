@@ -10,7 +10,8 @@ def_args = {
 
 with DAG ("ETL",
           catchup=False,
-          default_args=def_args) as dag:
+          default_args=def_args,
+          schedule="* * * * *") as dag:
     start = DummyOperator(task_id = "START")
     e = DummyOperator(task_id = "EXTRACT")
     t = DummyOperator(task_id = "TRANSFORM")
